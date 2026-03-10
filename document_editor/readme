@@ -1,0 +1,54 @@
+content type
+
+2 types text and image
+
+document hoga
+add test
+add image
+render document
+
+
+
+document editor
+create document
+create text;
+add text 
+creat image 
+add image
+save
+
+
+
+bold and italic wala..
+bold inherits content,
+bold(intalic(text())
+
+
+undo redo
+types of command 
+add image command 
+add text command
+add italic 
+add bold
+stack ka last command undo ho jaega
+
+ab mai apne remote se undo krungi
+
+
+clas command
+usi se inherit kr leti hu sbko
+
+
+add text
+add image
+
+main text, kajal
+if(text)
+
+undo redo smjh nhi ara
+
+
+text
+textcommand
+image ara imagee command
+
