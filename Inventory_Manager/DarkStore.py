@@ -1,29 +1,22 @@
 class DarkStore:
     def __init__(self, inventory_manager, fill_strategy=None, x=0, y=0):
         self.inventory_manager = inventory_manager
-        self.fill_strategy = fill_strategy
         self.x = x
         self.y = y
 
-    def add_product_to_store(self, product, quantity):
-        self.inventory_manager.add_product(product, quantity)
+    def add_product_to_store(self, product, quantity, fill_interval_days):
+        self.inventory_manager.add_product(product, quantity, fill_interval_days)
 
     def remove_product_from_store(self, product, quantity):
         self.inventory_manager.remove_product(product, quantity)
 
-    def get_store_inventory(self):
-        return self.inventory_manager.get_inventory()
 
-    def set_fill_strategy(self, fill_strategy):
-        """Runtime pe strategy change karo"""
-        self.fill_strategy = fill_strategy
-
-    def fill_product(self, product):
+    def add_product(self, product, quantity, fill_interval_days):
         """Current strategy se product bharo"""
-        if self.fill_strategy:
-            self.fill_strategy.fill(product, self.inventory_manager.inventory)
+        if self.inventory_manager:
+            self.inventory_manager.add_product(product, quantity, fill_interval_days)
         else:
-            print("No fill strategy set!")
+            print("No Inventary Manager available to add products.")
     
     def location(self, x, y):
         # Code to determine the location of the dark store
@@ -43,10 +36,11 @@ class DarkStore:
         
 
 class DarkStoreManager:
-    def __init__(self, dark_store):
-        self.dark_store = dark_store
-
-    def manage_inventory(self, product, quantity):
+        
+    def add_dark_store(self, x,y):
+        self.dark_store = DarkStore(inventory_manager=None, x=x, y=y)
+       # self.dark_store.append(dark_store)
+    def manage_inventory(self, product, quantity,DarkStore):
         self.dark_store.add_product_to_store(product, quantity)
 
     def manage_location(self, x, y):
