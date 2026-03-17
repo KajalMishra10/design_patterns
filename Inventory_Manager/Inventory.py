@@ -57,3 +57,15 @@ class InventoryManager:
 
     def get_inventory(self):
         return self.inventory.get_inventory()
+    
+    def has_product(self, product, quantity):
+        inventory = self.get_inventory()
+        if product.product_id in inventory and inventory[product.product_id]["quantity"] >= quantity:
+            return True
+        return False
+
+class InventoryManagerFactory:
+    @staticmethod
+    def create(db_connection=None):
+        inventory = DBInventory(db_connection)
+        return InventoryManager(inventory)
