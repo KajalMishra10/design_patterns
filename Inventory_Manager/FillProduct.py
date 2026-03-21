@@ -9,7 +9,7 @@ class FillProductWeekly(FillProduct):
     def fill(self, product, dark_store):
         quantity = product.daily_demand * 7
         print(f"Weekly fill: {product.name} -> {quantity} units")
-        dark_store.add_product_to_store(product, quantity, 7)
+        dark_store.add_product_to_store(product, quantity)
 
 
 class FillProductMonthly(FillProduct):
@@ -17,10 +17,4 @@ class FillProductMonthly(FillProduct):
     def fill(self, product, dark_store):
         quantity = product.daily_demand * 30
         print(f"Monthly fill: {product.name} -> {quantity} units")
-        dark_store.add_product_to_store(product, quantity, 30)
-
-class FillService:
-    def refill_all(self, product, store_manager):
-        for store in store_manager.get_all_stores():
-            if store.fill_strategy:
-                store.fill_strategy.fill(product, store)
+        dark_store.add_product_to_store(product, quantity)

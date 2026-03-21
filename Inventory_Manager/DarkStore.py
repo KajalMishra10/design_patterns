@@ -8,8 +8,8 @@ class DarkStore:
         self.y = y
         self.fill_strategy = fill_strategy
 
-    def add_product_to_store(self, product, quantity, fill_interval_days):
-        self.inventory_manager.add_product(product, quantity, fill_interval_days)
+    def add_product_to_store(self, product, quantity):
+        self.inventory_manager.add_product(product, quantity)
 
     def remove_product_from_store(self, product, quantity):
         self.inventory_manager.remove_product(product, quantity)
@@ -41,9 +41,16 @@ class DarkStoreManager:
         self.dark_stores = []
 
     # ✅ 1. Create new store (Admin side)
-    def add_dark_store(self, x, y,fill_strategy=None):
-        inventory_manager = InventoryManagerFactory.create()
-        store = DarkStore(inventory_manager, fill_strategy, x, y)
+    def add_dark_store(self, x, y, fill_strategy=None, observers=None):
+        store = DarkStore(None, fill_strategy, x, y)
+        inventory_manager = InventoryManagerFactory.create(dark_store=store)
+        store.inventory_manager = inventory_manager
+
+        # attach observers to inventory manager
+        if observers:
+            for obs in observers:
+                inventory_manager.add_observer(obs)
+
         self.dark_stores.append(store)
         return store
 
@@ -67,8 +74,8 @@ class DarkStoreManager:
         )
 
     # ✅ 5. Add product to specific store
-    def add_product_to_store(self, store, product, quantity, fill_interval_days):
-        store.add_product_to_store(product, quantity, fill_interval_days)
+    def add_product_to_store(self, store, product, quantity):
+        store.add_product_to_store(product, quantity)
 
     def remove_product_from_store(self, store, product, quantity):
         store.remove_product_from_store(product, quantity)
