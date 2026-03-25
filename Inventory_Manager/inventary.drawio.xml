@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36" version="29.6.6">
   <diagram name="Page-1" id="-bbyltq3tqGFnTKHH5kv">
-    <mxGraphModel dx="1209" dy="1742" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1429" dy="1858" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -337,6 +337,45 @@
         </mxCell>
         <mxCell id="Ui9qdtVFXvfF_mZZYgGx-50" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="order.setState=confirmState()" vertex="1">
           <mxGeometry height="30" width="150" x="675" y="-170" as="geometry" />
+        </mxCell>
+        <mxCell id="Ui9qdtVFXvfF_mZZYgGx-51" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="150" width="160" x="280" y="-600" as="geometry" />
+        </mxCell>
+        <mxCell id="Ui9qdtVFXvfF_mZZYgGx-52" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font face=&quot;Verdana&quot;&gt;Order Service&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="110" x="305" y="-600" as="geometry" />
+        </mxCell>
+        <mxCell id="Ui9qdtVFXvfF_mZZYgGx-53" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="darkStore,&lt;div&gt;deliveryService&lt;/div&gt;&lt;div&gt;CreateOreder(cart,user)&lt;/div&gt;&lt;div&gt;order=Order()&lt;/div&gt;&lt;div&gt;return order&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="145" x="285" y="-590" as="geometry" />
+        </mxCell>
+        <mxCell id="Ui9qdtVFXvfF_mZZYgGx-54" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="170" width="140" x="540" y="-600" as="geometry" />
+        </mxCell>
+        <mxCell id="Ui9qdtVFXvfF_mZZYgGx-55" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font face=&quot;Verdana&quot;&gt;Order&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="580" y="-600" as="geometry" />
+        </mxCell>
+        <mxCell id="Ui9qdtVFXvfF_mZZYgGx-56" edge="1" parent="1" source="Ui9qdtVFXvfF_mZZYgGx-51" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" target="Ui9qdtVFXvfF_mZZYgGx-9" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="490" y="-200" as="sourcePoint" />
+            <mxPoint x="540" y="-250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ui9qdtVFXvfF_mZZYgGx-57" edge="1" parent="1" source="Ui9qdtVFXvfF_mZZYgGx-51" style="endArrow=classic;html=1;rounded=0;exitX=0.989;exitY=0.65;exitDx=0;exitDy=0;exitPerimeter=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="490" y="-480" as="sourcePoint" />
+            <mxPoint x="540" y="-530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ui9qdtVFXvfF_mZZYgGx-58" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="location ,deliveryPartner,&lt;div&gt;items&lt;/div&gt;&lt;div&gt;self.state=placedOrder()&lt;/div&gt;&lt;div&gt;confirm&lt;/div&gt;&lt;div&gt;dispatch&lt;/div&gt;&lt;div&gt;delivery&lt;/div&gt;&lt;div&gt;cancel&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="160" width="130" x="545" y="-590" as="geometry" />
+        </mxCell>
+        <mxCell id="Ui9qdtVFXvfF_mZZYgGx-59" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="280" width="220" x="70" y="-440" as="geometry" />
+        </mxCell>
+        <mxCell id="Ui9qdtVFXvfF_mZZYgGx-60" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font face=&quot;Verdana&quot;&gt;Main&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="145" y="-440" as="geometry" />
+        </mxCell>
+        <mxCell id="Ui9qdtVFXvfF_mZZYgGx-61" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="DarkStoreManaer()&lt;div&gt;manager.add(strategy,[observers])&lt;/div&gt;&lt;div&gt;p1=Factory.creteProuct()&lt;/div&gt;&lt;div&gt;manager.addProduct(p1)&lt;/div&gt;&lt;div&gt;cart()&lt;/div&gt;&lt;div&gt;cart.addItem(p1)&lt;/div&gt;&lt;div&gt;partner=[ddeliveryPartern(raju)]&lt;/div&gt;&lt;div&gt;order_service(manager,deliveryService)&lt;/div&gt;&lt;div&gt;order=ordderservice(cart)&lt;/div&gt;&lt;div&gt;order.confirm()&lt;/div&gt;&lt;div&gt;order.dispatch()&lt;/div&gt;&lt;div&gt;order.deliver()&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="340" width="325" x="17.5" y="-450" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
