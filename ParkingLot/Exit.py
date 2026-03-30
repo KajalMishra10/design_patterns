@@ -1,0 +1,1 @@
+#this is the Exit class. It is responsible for processing the exit of vehicles from the parking lot. It calculates the parking fee based on the duration of the parking and updates the available parking spots accordingly.s

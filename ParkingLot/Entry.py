@@ -1,0 +1,2 @@
+#class Entry
+# This class represents the entry point of the parking lot. It is responsible for generating tickets for vehicles entering the parking lot and keeping track of the available parking spots.
