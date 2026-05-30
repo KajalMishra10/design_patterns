@@ -12,7 +12,7 @@ class ParkingFloor:
 
     def find_available_spot(self, vehicle):
         for spot in self.parking_spots:
-            if spot.is_available() and spot.spot_type == vehicle.vehicle_type:
+            if spot.is_available() and spot.can_fit_vehicle(vehicle):
                 return spot
         return None
     
