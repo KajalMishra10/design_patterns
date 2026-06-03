@@ -3,6 +3,7 @@ from typing import Dict, List, Optional
 from post_observer import PostObserver
 from Event import Event
 import uuid
+from Tag import Tag
 
 class content:
     def __init__(self, title, body,user,id):

@@ -1,10 +1,12 @@
 
 from typing import Dict
 import uuid
+from typing import List
 
 from content import Question, Answer
 from User import User
 from reputation_manager import reputation_manager
+from search_strategy import SearchStrategy
 
 class stack_overflow_service:
     def __init__(self):
@@ -59,3 +61,10 @@ class stack_overflow_service:
             print("Answer not found.")
             return
         question.accept_answer(answer)
+
+    def search_questions(self, strategies: List[SearchStrategy]):
+        questions = list(self.questions.values())
+        for strategy in strategies:
+            questions = strategy.filter(questions)
+
+        return questions
