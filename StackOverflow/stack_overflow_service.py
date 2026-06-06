@@ -41,7 +41,7 @@ class stack_overflow_service:
             print("Question not found.")
             return None
         answer_id = str(uuid.uuid4())
-        answer = Answer("", body, user, answer_id, question)
+        answer = Answer("", body, user, answer_id)
         answer.add_observer(self.reputation_manager)
         self.answers[answer_id] = answer
         question.answers.append(answer)

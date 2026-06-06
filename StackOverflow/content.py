@@ -1,6 +1,6 @@
 from enums import VoteType, EventType
 from typing import Dict, List, Optional
-from post_observer import PostObserver
+from post_observer import post_observer
 from Event import Event
 import uuid
 from Tag import Tag
@@ -35,10 +35,10 @@ class Post(content):
         super().__init__(title, body,user,id)
         self.votes = 0
         self.voters: Dict[str, VoteType] = {}
-        self.comments = List['Comment'] = []
-        self.observers = List['PostObserver'] = []
+        self.comments =  []
+        self.observers =  []
     
-    def add_observer(self, observer: PostObserver):
+    def add_observer(self, observer: post_observer):
         self.observers.append(observer)
 
     def notify_observers(self, event: 'Event'):
@@ -88,9 +88,9 @@ class Post(content):
 class Question(Post):
     def __init__(self, title, body,user,id,tags:set[Tag]):
         super().__init__(title, body,user,id)
-        self.answers = List['Answer'] = []
+        self.answers =  []
         self.tags = tags
-        self.accepted_answer: Optional['Answer'] = None
+        self.accepted_answer = None
         
     def add_answer(self, answer):
         self.answers.append(answer)

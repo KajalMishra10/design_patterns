@@ -12,16 +12,16 @@ class reputation_manager(post_observer):
     def __init__(self):
         self.user_reputation = {}
 
-    def on_post_event(self,  event):
+    def on_post_event(self, post, event):
         user = event.get_actor()
         if event.get_type() == EventType.UPVOTE_QUESTION:
-            user.add_reputation(self.QUESTION_UPVOTE_REP)
+            user.update_reputation(self.QUESTION_UPVOTE_REP)
         elif event.get_type() == EventType.UPVOTE_ANSWER:
-            user.add_reputation(self.ANSWER_UPVOTE_REP)
+            user.update_reputation(self.ANSWER_UPVOTE_REP)
         elif event.get_type() == EventType.ACCEPT_ANSWER:
-            user.add_reputation(self.ACCEPTED_ANSWER_REP)
+            user.update_reputation(self.ACCEPTED_ANSWER_REP)
         elif event.get_type() == EventType.DOWNVOTE_QUESTION or event.get_type() == EventType.DOWNVOTE_ANSWER:
-            user.add_reputation(self.DOWNVOTE_REP_PENALTY)
+            user.update_reputation(self.DOWNVOTE_REP_PENALTY)
             post_author = event.get_target_post().get_user()
-            post_author.add_reputation(self.POST_DOWNVOTED_REP_PENALTY)
+            post_author.update_reputation(self.POST_DOWNVOTED_REP_PENALTY)
         
