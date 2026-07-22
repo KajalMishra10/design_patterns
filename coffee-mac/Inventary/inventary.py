@@ -1,4 +1,5 @@
 from recipe.ingredient import Ingredient, InventoryIngredient
+from recipe.recipe import Recipe
 
 
 class Inventory:
@@ -32,3 +33,17 @@ class Inventory:
             return 0
 
         return self.ingredients[ingredient].quantity
+    
+    def check_ingredient_availability(self, recipe: Recipe) -> bool:
+        for recipe_ingredient in recipe.ingredients:
+            ingredient = recipe_ingredient.ingredient
+            required_quantity = recipe_ingredient.quantity
+
+            if ingredient not in self.ingredients:
+                return False
+
+            inventory_ingredient = self.ingredients[ingredient]
+            if inventory_ingredient.quantity < required_quantity:
+                return False
+
+        return True
