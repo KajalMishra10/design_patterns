@@ -1,9 +1,10 @@
 from state.vending_machine_state import VendingMachineState
 
 class SelectState(VendingMachineState):
+    
     def insert_coin(self, amount):
         print("please select a product first.")
-
+    
     def select_product(self, name):
         if self.vending_machine.is_product_available(name):
             print(f"Product {name} selected. Dispensing product...")
