@@ -10,12 +10,3 @@ class VendingMachineState:
 
     def dispense_product(self):
         raise NotImplementedError("This method should be overridden in subclasses.")
-
-    def return_money(self):
-        raise NotImplementedError("This method should be overridden in subclasses.")
-    
-    def no_ingredients(self):
-        raise NotImplementedError("This method should be overridden in subclasses.")
-
-
-
