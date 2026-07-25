@@ -11,28 +11,52 @@ class VendingMachine:
         self.recipe_manager = RecipeManager()
         self.inventory_manager=Inventory()
         self.current_state=SelectState(self)
+        self.selected_product=None
 
-    def add_new_coffee(self, item_name, price, quantity):
+    def add_new_coffee(self, item_name, price, recipe):
         if item_name in self.items:
-            self.items[item_name]['quantity'] += quantity
+            self.recipe_manager.add_recipe(recipe)
+            self.items[item_name]={"price": price}
         else:
             if item_name in [coffee.value for coffee in CoffeeType]:
-                self.items[item_name] = {"price": price,
-                                        "quantity": quantity}
+                self.items[item_name] = {"price": price}
+                self.recipe_manager.add_recipe(recipe)
+                                        
             else:
                 raise ValueError("Invalid coffee type")
+
     def get_recipe(self, coffee_type: CoffeeType):
         return self.recipe_manager.find_recipe_by_name(coffee_type)
 
     def check_ingredient_availability(self, recipe):
         return self.inventory_manager.check_ingredient_availability(recipe)
 
+    def is_product_available(self, item_name):
+        return item_name in self.items 
+
+    def validate_product(self,name):
+        if self.is_product_available(name):
+            recipe=self.get_recipe(name)
+            if recipe:
+                check=self.check_ingredient_availability(recipe)
+                if check==False:
+                    print("Not enough ingredients available.")
+                    return False
+                else: 
+                    return True
+            else:
+                print(f"Recipe for {name} not found.")
+                return False
+        else:
+            print(f"Product {name} is not available. Please select another product.")
+            return False
+    
     def insert_money(self, amount):
         pass
      
     def select_item(self, item_name):
         pass
-    
+
     def refund(self):
         refunded_amount = self.balance
         self.balance = 0

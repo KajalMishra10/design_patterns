@@ -5,7 +5,7 @@ class VendingMachineState:
     def insert_coin(self, amount):
         raise NotImplementedError("This method should be overridden in subclasses.")
 
-    def select_product(self, product_code):
+    def select_product(self, name):
         raise NotImplementedError("This method should be overridden in subclasses.")
 
     def dispense_product(self):
