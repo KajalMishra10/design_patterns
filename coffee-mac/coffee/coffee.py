@@ -14,7 +14,7 @@ class Coffee(ABC):
     def get_name(self):
         return self.name
 
-    def get_price(self):
+    def get_cost(self):
         return self.price
 
     def get_description(self):

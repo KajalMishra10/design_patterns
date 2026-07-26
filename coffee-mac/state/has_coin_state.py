@@ -1,15 +1,18 @@
 from state.vending_machine_state import VendingMachineState
+from state.dispense_state import DispenseState
 
-class insert_coin_state(VendingMachineState):
-    def __init__(self, vending_machine):
-        self.vending_machine = vending_machine
+class HasCoinState(VendingMachineState):
 
     def insert_coin(self, amount):
-        self.vending_machine.balance=self.vending_machine.balance+amount
-         
+        self.vending_machine.balance = self.vending_machine.balance + amount
+        if self.vending_machine.isSufficient():
+            self.vending_machine.set_state(DispenseState(self.vending_machine))
+        else:
+            remaining = self.vending_machine.get_remaining_amount()
+            print(f"Balance: {self.vending_machine.balance}. Insert {remaining} more.")
 
     def select_product(self, name):
-        print("product already selected please insert money now")
+        print("Product already selected, please insert money now.")
 
     def dispense_product(self):
-            print("please insert money first.")
+        print("Insufficient balance, please insert money first.")

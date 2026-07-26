@@ -12,6 +12,7 @@ class VendingMachine:
         self.inventory_manager=Inventory()
         self.current_state=SelectState(self)
         self.selected_product=None
+        self.addons=[]
 
     def add_new_coffee(self, item_name, price, recipe):
         if item_name in self.items:
@@ -24,7 +25,9 @@ class VendingMachine:
                                         
             else:
                 raise ValueError("Invalid coffee type")
-
+    def addAddOns(self,name):
+        self.addons.append(name)
+        
     def get_recipe(self, coffee_type: CoffeeType):
         return self.recipe_manager.find_recipe_by_name(coffee_type)
 
@@ -50,7 +53,19 @@ class VendingMachine:
         else:
             print(f"Product {name} is not available. Please select another product.")
             return False
-    
+
+    def validate_addons(self, addons):
+        i
+    def isSufficient(self):
+        productPrice=self.items[self.selected_product]["price"]
+
+        if self.balance>=productPrice:
+            return True
+        else:
+            return False
+    def set_state(self, state):
+        self.current_state=state
+
     def insert_money(self, amount):
         pass
      
