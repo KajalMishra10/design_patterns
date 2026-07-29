@@ -1,12 +1,18 @@
-class VendingMachineState:
+from abc import ABC, abstractmethod
+
+class VendingMachineState(ABC):
+
     def __init__(self, vending_machine):
         self.vending_machine = vending_machine
 
+    @abstractmethod
     def insert_coin(self, amount):
-        raise NotImplementedError("This method should be overridden in subclasses.")
+        pass
 
-    def select_product(self, name):
-        raise NotImplementedError("This method should be overridden in subclasses.")
+    @abstractmethod
+    def select_product(self, name, addons=None):
+        pass
 
+    @abstractmethod
     def dispense_product(self):
-        raise NotImplementedError("This method should be overridden in subclasses.")
+        pass

@@ -1,18 +1,21 @@
-
 from enums.coffee_type import CoffeeType
 from recipe.recipe_manager import RecipeManager
 from Inventary.inventary import Inventory
 from state.select_state import SelectState
+from addon.addon_manager import AddonManager
+from addon.addon import Addon
 
 class VendingMachine:
     def __init__(self):
         self.items = {}
         self.balance = 0
         self.recipe_manager = RecipeManager()
-        self.inventory_manager=Inventory()
-        self.current_state=SelectState(self)
-        self.selected_product=None
-        self.addons=[]
+        self.inventory_manager = Inventory()
+        self.addon_manager = AddonManager()
+        self.current_state = SelectState(self)
+        self.selected_product = None
+        self.selected_addons = []
+        
 
     def add_new_coffee(self, item_name, price, recipe):
         if item_name in self.items:
@@ -24,10 +27,8 @@ class VendingMachine:
                 self.recipe_manager.add_recipe(recipe)
                                         
             else:
-                raise ValueError("Invalid coffee type")
-    def addAddOns(self,name):
-        self.addons.append(name)
-        
+                raise ValueError("Invalid coffee type")       
+         
     def get_recipe(self, coffee_type: CoffeeType):
         return self.recipe_manager.find_recipe_by_name(coffee_type)
 
@@ -55,14 +56,19 @@ class VendingMachine:
             return False
 
     def validate_addons(self, addons):
-        i
-    def isSufficient(self):
-        productPrice=self.items[self.selected_product]["price"]
+        return self.addon_manager.validate_addons(addons)
+    
+    def get_total_price(self):
+        product_price = self.items[self.selected_product]["price"]
+        addon_price = self.addon_manager.get_total_addon_price(self.selected_addons)
+        return product_price + addon_price
 
-        if self.balance>=productPrice:
-            return True
-        else:
-            return False
+    def isSufficient(self):
+        return self.balance >= self.get_total_price()
+
+    def get_remaining_amount(self):
+        return self.get_total_price() - self.balance
+  
     def set_state(self, state):
         self.current_state=state
 
