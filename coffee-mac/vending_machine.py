@@ -73,12 +73,16 @@ class VendingMachine:
         self.current_state=state
 
     def insert_money(self, amount):
-        pass
+        self.current_state.insert_coin(amount)
+
      
-    def select_item(self, item_name):
-        pass
+    def select_item(self, item_name,addons=None):
+        self.current_state.select_product(item_name,addons)
 
     def refund(self):
         refunded_amount = self.balance
         self.balance = 0
         return f"Refunded: {refunded_amount}"
+    
+    def deduct_ingredients(self,recipe):
+        self.inventory_manager.deduct_ingredients(recipe)

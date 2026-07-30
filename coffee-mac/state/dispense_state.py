@@ -13,8 +13,8 @@ class DispenseState(VendingMachineState):
     def dispense_product(self):
         vending_machine = self.vending_machine
         recipe = vending_machine.get_recipe(vending_machine.selected_product)
-
-        vending_machine.inventory_manager.deduct_ingredients(recipe)
+        
+        vending_machine.deduct_ingredients(recipe)
 
         coffee = vending_machine.build_coffee()
         change = vending_machine.balance - coffee.get_cost()
