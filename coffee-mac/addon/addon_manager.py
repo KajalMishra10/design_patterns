@@ -2,11 +2,15 @@ from addon.addon import Addon
 
 
 class AddonManager:
+    DEFAULT_ADDONS = [
+        ("Extra Sugar", 5),
+        ("Extra Milk", 10),
+    ]
 
     def __init__(self):
         self._addons = {}
-        self.add_addon(Addon("Extra Sugar", 5))
-        self.add_addon(Addon("Extra Milk", 10))
+        for name, price in self.DEFAULT_ADDONS:
+            self.add_addon(Addon(name, price))
 
     def add_addon(self, addon: Addon):
         self._addons[addon.name] = addon
@@ -23,7 +27,7 @@ class AddonManager:
             return True
 
         for addon_name in addon_names:
-            if addon_name not in self._addons:
+            if not self.is_addon_available(addon_name):
                 print(f"{addon_name} is not supported.")
                 return False
 
