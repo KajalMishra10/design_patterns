@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+#ABC = Abstract Base Class
 
 class VendingMachineState(ABC):
 
