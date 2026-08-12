@@ -1,4 +1,5 @@
 from enums.coffee_type import CoffeeType
+from recipe.recipe import Recipe
 from recipe.recipe_manager import RecipeManager
 from Inventary.inventary import Inventory
 from state.select_state import SelectState
@@ -8,35 +9,42 @@ from addon.addon import Addon
 class VendingMachine:
     def __init__(self):
         self.items = {}
+
         self.balance = 0
+
         self.recipe_manager = RecipeManager()
         self.inventory_manager = Inventory()
         self.addon_manager = AddonManager()
+
         self.current_state = SelectState(self)
+
         self.selected_product = None
         self.selected_addons = []
         
 
-    def add_new_coffee(self, item_name, price, recipe):
-        if item_name in self.items:
-            self.recipe_manager.add_recipe(recipe)
-            self.items[item_name]={"price": price}
-        else:
-            if item_name in [coffee.value for coffee in CoffeeType]:
-                self.items[item_name] = {"price": price}
-                self.recipe_manager.add_recipe(recipe)
-                                        
-            else:
-                raise ValueError("Invalid coffee type")       
+    def add_new_coffee(
+    self,
+    coffee_type: CoffeeType,
+    price: int,
+    recipe: Recipe):
+        if not isinstance(coffee_type, CoffeeType):
+            raise ValueError("Invalid coffee type.")
+
+        self.items[coffee_type] = {
+        "price": price}
+
+        self.recipe_manager.add_recipe(recipe)       
          
     def get_recipe(self, coffee_type: CoffeeType):
-        return self.recipe_manager.find_recipe_by_name(coffee_type)
-
+        return self.recipe_manager.get_recipe(coffee_type)
+    
+    def is_product_available(self, coffee_type: CoffeeType):
+        return coffee_type in self.items
+    
     def check_ingredient_availability(self, recipe):
         return self.inventory_manager.check_ingredient_availability(recipe)
 
-    def is_product_available(self, item_name):
-        return item_name in self.items 
+    
 
     def validate_product(self,name):
         if self.is_product_available(name):

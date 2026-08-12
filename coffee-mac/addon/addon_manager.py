@@ -34,14 +34,4 @@ class AddonManager:
 
         return True
 
- #   def get_total_addon_price(self, addon_names):
-
-  #      total = 0
-
-   #     if not addon_names:
-    #        return total
-#
- #       for addon_name in addon_names:
-  #          total += self._addons[addon_name].price
-
-  #      return total
+ 
